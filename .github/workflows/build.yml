@@ -10,3 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
+      - name: Build
+        run: gradlew build
+      - name: Upload jars
+        uses: actions/upload-artifact@v1.1.2
+        with:
+          name: jars
+          path: build/libs
+          if-no-files-found: error
